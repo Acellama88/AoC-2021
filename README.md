@@ -1,2 +1,2 @@
 # AoC-2021
- Advent Of Code 2021 Repository
+ Attempt #2 to learn Python by participating in [Advent of Code](adventofcode.com)
