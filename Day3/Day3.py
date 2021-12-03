@@ -28,12 +28,9 @@ def part2():
     with open(input) as f:
         for line in f:
             data.append(line.strip())
-            
     length = len(data[0])
     MSL = data
     LSL = data
-    tLSL_1 = []
-    tLSL_0 = []
     for loc in range(0,length):
         tMSL_1 = []
         tMSL_0 = []
