@@ -35,17 +35,7 @@ def part1():
             y0 = int(line[1])
             x1 = int(line[2])
             y1 = int(line[3])
-            addVal = ()
-            if x0 != x1:
-                if(x0 < x1):
-                    addVal = (1,0)
-                else:
-                    addVal = (-1,0)
-            else:
-                if(y0 < y1):
-                    addVal = (0,1)
-                else:
-                    addVal = (0,-1)
+            addVal = getAdder(x0, y0, x1, y1)
             curX = x0
             curY = y0
             last = False
