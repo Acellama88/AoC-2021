@@ -1,9 +1,7 @@
 import re
-import numpy as np
 
 file = "./Day6/input.txt"
 input = []
-coords = {}
 totalCount = 0
 fish = []
 
@@ -25,21 +23,12 @@ def part1():
 
 def part2():
     schoolFish = [0,0,0,0,0,0,0,0,0]
-    schoolFish[1] = fish.count(1)
-    schoolFish[2] = fish.count(2)
-    schoolFish[3] = fish.count(3)
-    schoolFish[4] = fish.count(4)
-    schoolFish[5] = fish.count(5)
+    for i in range(0,9):
+        schoolFish[i] = fish.count(i)
     for count in range(0,256):
         newfish = schoolFish[0]
-        schoolFish[0] = schoolFish[1]
-        schoolFish[1] = schoolFish[2]
-        schoolFish[2] = schoolFish[3]
-        schoolFish[3] = schoolFish[4]
-        schoolFish[4] = schoolFish[5]
-        schoolFish[5] = schoolFish[6]
-        schoolFish[6] = schoolFish[7]
-        schoolFish[7] = schoolFish[8]
+        for i in range(0,8):
+            schoolFish[i] = schoolFish[i+1]
         schoolFish[8] = newfish
         schoolFish[6] += newfish
     totalCount = 0
