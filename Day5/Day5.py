@@ -85,4 +85,4 @@ def part2():
 
 if __name__ == '__main__':
     parse()
-    part2()
+    part1()
