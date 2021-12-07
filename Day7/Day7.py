@@ -32,7 +32,7 @@ def countMove(count):
         total = (count / 2) * (count + 1)
     else:
         total = countMove(count - 1) + count
-    return total
+    return int(total)
 
 def part2():
     crabs.sort()
