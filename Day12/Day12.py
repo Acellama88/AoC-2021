@@ -56,7 +56,7 @@ def doPath2(curPath: str, curNode):
         if conNode == "end" or conNode == "start":
             continue
         elif isLower(conNode[0]) and curPath[0:6] == "-start" and curPath.find(conNode) >= 0:
-            #Have not processed this small node.
+            #This will be out twice processed small cave
             doPath2(curNode + curPath + "-" + curNode, conNode)
         elif isLower(conNode[0]) and curPath.find(conNode) < 0:
             #Have not processed this small node.
