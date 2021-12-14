@@ -26,6 +26,7 @@ def part1():
                 break
             pair = polymer[j:j+2]
             newPoly += rules[pair]
+        print(polymer)
     polyList = list(polymer)
     cMax = max(polyList, key=polyList.count)
     cMin = min(polyList, key=polyList.count)
@@ -45,23 +46,36 @@ def part2():
     global polymer
     for i in range(40):
         newPoly = ""
-        for j in range(len(polymer)): #change - needs to just increment
-            found = True
-            while found: #keep looping as we find keys
-                count = 3
-                temp = polymer[j:j+count]
-                newPoly += polymer[j]
-                if j == len(polymer) - 1:
-                    polymer = newPoly
-                    break
-                pair = polymer[j:j+2]
-                newPoly += rules[pair] #save largest subset, start at next letter
-    polyList = list(polymer)
-    cMax = max(polyList, key=polyList.count)
-    cMin = min(polyList, key=polyList.count)
+        j = 0
+        maxCount = 0
+        while j < len(polymer) - 1:
+            count = 2
+            while polymer[j:j+count] in rules and j+count <= len(polymer):
+                count += 1
+            if count > maxCount:
+                maxCount = count
+            temp = rules[polymer[j:j+count-1]]
+            newPoly += temp[0:-1]
+            j = j + count-2
+        #add new pieces
+        newPoly += polymer[-1]
 
-    print(polymer.count(cMax) - polymer.count(cMin))
-    #print(polymer)
+        
+        #k = 0
+        #while k < len(polymer)-2:
+        #    j =  k + 1
+        #    while j - k < maxCount:
+        #        diff = j - k
+        #        temp = polymer[k:j+1]
+        #        if temp in rules:
+        #            j += 1
+        #            continue
+        #        temp2 = newPoly[k*2:j*2 +1]
+        #        rules[temp] = temp2
+        #        j += 1
+        #    k += 1
+        polymer = newPoly
+
 
 if __name__ == '__main__':
     parse()
