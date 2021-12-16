@@ -1,12 +1,12 @@
 import re
+import math
 
 file = "./Day14/example.txt"
 finalTotal = 0
 rules = {}
 newRules = {}
 
-polymer = "NNCB"
-#polymer = "KFVHFSSVNCSNHCPCNPVO"
+polymer = "KFVHFSSVNCSNHCPCNPVO"
 
 def parse():
     global rules
@@ -41,7 +41,7 @@ def part2():
     while i < len(polymer)-1:
         pairs[polymer[i] + polymer[i+1]] = 1
         i += 1
-    for turn in range(1,11):
+    for turn in range(0,40): #technically 39 since while above does 1st one...
         newPairs = {}
         for pair in pairs:
             newChar = rules[pair]
@@ -54,7 +54,9 @@ def part2():
             else:
                 newPairs[newChar + pair[1]] = pairs[pair]
         pairs = newPairs.copy()
-        print(f"{turn} {pairs}")
+        length = 1
+        for pair in pairs:
+            length += pairs[pair]
     totals = {}
     for pair in pairs:
         for char in pair:
@@ -62,7 +64,11 @@ def part2():
                 totals[char] += pairs[pair]
             else:
                 totals[char] = pairs[pair]
-    print(totals)
+    for char in totals:
+        totals[char] = math.ceil(totals[char]/2)
+    max_key = max(totals,key=totals.get)
+    min_key = min(totals,key=totals.get)
+    print(totals[max_key] - totals[min_key])
 
 
 if __name__ == '__main__':
