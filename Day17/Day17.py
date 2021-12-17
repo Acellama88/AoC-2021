@@ -1,15 +1,3 @@
-from os import truncate
-import re
-
-file = "./Day17/input.txt"
-finalTotal = 0
-input = []
-
-#txMin = 20
-#txMax = 30
-#tyMin = -10
-#tyMax = -5
-
 txMin = 248
 txMax = 285
 tyMin = -85
@@ -19,14 +7,6 @@ failure = 1000
 
 yVals = []
 xVals = []
-
-def parse():
-    with open(file) as f:
-        for line in f:
-            if False:
-                input.extend(re.split("",line.strip()))
-            else:
-                input.append(line.strip())
 
 def calcY(speed):
     y = 0
@@ -72,7 +52,6 @@ def maxY(vX, vY):
         if x >= txMin and x <= txMax and y >= tyMin and y <= tyMax:
             return [maxY, True]
     return [-1, False]
-
 
 def part1():
     global xVals
