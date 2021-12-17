@@ -11,7 +11,6 @@ litPack = 5
 lenBits = 15
 lenPac = 11
 
-
 def parse():
     global message
     binary = []
@@ -132,15 +131,3 @@ def part2():
 if __name__ == '__main__':
     parse()
     part2()
-
-#110100101111111000101000
-#VVVTTTAAAAABBBBBCCCCC
-
-#V = Version
-#T = ID (4)
-#A = Literal (LS 4-bits)
-#B = Literal (LS 4-bits)
-#C = Literal (LS 4-bits)
-
-
-#ID4 - Literal with 5 bit packets, MSB signals more data (1) or done (0)
