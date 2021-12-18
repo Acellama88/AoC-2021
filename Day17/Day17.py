@@ -118,5 +118,4 @@ def part2():
     print(retVal)
 
 if __name__ == '__main__':
-    parse()
     part2()
