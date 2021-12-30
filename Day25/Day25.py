@@ -1,4 +1,5 @@
-import re
+import re        
+from PIL import Image
 
 file = "./Day25/input.txt"
 finalTotal = 0
@@ -14,6 +15,7 @@ def parse():
 
 def part1():
     global input
+    images = []
     count = 0
     updated = True
     xMax = len(input[0])
@@ -58,7 +60,17 @@ def part1():
                     nextY = (i[1] + 1) % yMax
                     input[y][x] = '.'
                     input[nextY][x] = 'v'
-
+        img = Image.new('RGB',(xMax, yMax), "black")
+        pixels=img.load()
+        for x in range(img.size[0]):
+            for y in range(img.size[1]):
+                if(input[y][x] == ">"):
+                    pixels[x,y] = (175,0,0)
+                elif(input[y][x] == "v"):
+                    pixels[x,y] = (0,175,0)
+        #img = img.resize((xMax * 10, yMax * 10), Image.BILINEAR)
+        images.append(img)
+    images[0].save('image_orig.gif', save_all=True, append_images=images[1:], optimize=False, duration=30, loop=0)
     print(count)
 
 
