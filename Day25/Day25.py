@@ -1,5 +1,6 @@
 import re        
 from PIL import Image
+#py -m pip install pillow
 
 file = "./Day25/input.txt"
 finalTotal = 0
